@@ -1,6 +1,7 @@
 from argparse import ArgumentParser
 from detectives.mapping import string_to_detective as mapping
 from scipy.io import wavfile
+import loader
 
 
 def main():
@@ -14,11 +15,15 @@ def main():
     for fn in args.filename:
         print('Analysing file: {0}'.format(fn))
 
-        sr, data = wavfile.read(fn)
+        typ, data = loader.load(fn)
 
-        detective = mapping[detective_arg](data)
-        result = detective.audio(sr)
-        print(result)
+        detective = mapping[detective_arg](data['data'])
+
+        if typ == loader.InputType.AUDIO:
+            result = detective.audio(data['sr'])
+            print(result)
+        else:
+            print("Not supported file")
 
 
 if __name__ == '__main__':
