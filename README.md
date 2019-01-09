@@ -17,6 +17,11 @@ Command line tool for analysing music.
   - Detect Time Signatur
 - Genre Detection
 - Chords, Melody etc. are way harder tasks
+- Stereo to mono
+- channel mixing
+- Filtering
+- Cutting 
+- Balling
 
 ## Infrastructure
 - Add audio import for common formats
